@@ -75,6 +75,16 @@ public class PlayerController : MonoBehaviour
         inputHandler?.ClearOneShotFlags();
     }
 
+    public void SpawnProjectile()
+    {
+        if (projectilePrefab == null || throwOrigin == null) return;
+        float direction = Mathf.Sign(transform.localScale.x);
+        Vector2 throwDir = new Vector2(direction, 0);
+        Quaternion rot = direction > 0 ? Quaternion.Euler(0, 0, -90) : Quaternion.Euler(0, 0, 90);
+        GameObject proj = Instantiate(projectilePrefab, throwOrigin.position, rot);
+        proj.GetComponent<Projectile>()?.Launch(throwDir);
+    }
+
     public void Die()
     {
         Debug.Log($"PlayerController.Die() called. Current state: {StateMachine.currentState?.GetType().Name}");

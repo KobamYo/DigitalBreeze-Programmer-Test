@@ -11,26 +11,7 @@ public class ThrowState : PlayerState
     {
         player.animator.Play("Player_Throw");
         timer = player.throwDuration;
-        float direction = Mathf.Sign(player.transform.localScale.x);
-        Vector2 throwDir = new Vector2(direction, 0);
-
-        if (player.projectilePrefab != null && player.throwOrigin != null)
-        {
-            Quaternion rotation = Quaternion.Euler(0, 0, -90);
-            GameObject proj = GameObject.Instantiate(player.projectilePrefab, player.throwOrigin.position, rotation);
-            Quaternion rot;
-
-            if (direction > 0)
-                rot = Quaternion.Euler(0, 0, -90);
-            else
-                rot = Quaternion.Euler(0, 0, 90);
-                
-            proj.transform.rotation = rot;
-            Projectile projectileScript = proj.GetComponent<Projectile>();
-
-            if (projectileScript != null)
-                projectileScript.Launch(throwDir);
-        }
+        player.SpawnProjectile();
     }
 
     public override void Update()

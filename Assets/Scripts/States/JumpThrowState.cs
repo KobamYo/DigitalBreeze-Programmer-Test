@@ -11,6 +11,7 @@ public class JumpThrowState : PlayerState
     {
         player.animator.Play("Player_JumpThrow");
         timer = player.throwDuration;
+        player.SpawnProjectile();
     }
 
     public override void Update()
