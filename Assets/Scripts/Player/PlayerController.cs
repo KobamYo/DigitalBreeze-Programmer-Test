@@ -77,9 +77,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log($"PlayerController.Die() called. Current state: {StateMachine.CurrentState?.GetType().Name}");
+        Debug.Log($"PlayerController.Die() called. Current state: {StateMachine.currentState?.GetType().Name}");
         
-        if (StateMachine.CurrentState != DieState)
+        if (StateMachine.currentState != DieState)
         {
             Debug.Log("Transitioning to DieState");
             StateMachine.TransitionToState(DieState);
