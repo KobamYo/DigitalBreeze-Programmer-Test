@@ -77,8 +77,17 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        if (StateMachine.currentState != DieState)
+        Debug.Log($"PlayerController.Die() called. Current state: {StateMachine.CurrentState?.GetType().Name}");
+        
+        if (StateMachine.CurrentState != DieState)
+        {
+            Debug.Log("Transitioning to DieState");
             StateMachine.TransitionToState(DieState);
+        }
+        else
+        {
+            Debug.Log("Already in DieState");
+        }
     }
 
     public bool IsGrounded()

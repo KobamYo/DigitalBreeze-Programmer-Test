@@ -35,7 +35,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        Debug.Log("PlayerHealth.Die() called");
         if (playerController != null)
             playerController.Die();
+        else
+            Debug.LogError("playerController is null in PlayerHealth.Die!");
     }
 }

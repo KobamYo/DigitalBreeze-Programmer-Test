@@ -9,13 +9,11 @@ public class DieState : PlayerState
 
     public override void Enter()
     {
+        Debug.Log("DieState Enter");
         player.animator.Play("Player_Dead");
-        
         player.inputHandler.enabled = false;
-        
         player.rb.linearVelocity = Vector2.zero;
         player.rb.isKinematic = true;
-        
         player.collider.enabled = false;
     }
 
