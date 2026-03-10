@@ -8,15 +8,19 @@ public class AttackHitbox : MonoBehaviour
     public void EnableHitbox()
     {
         canDamage = true;
+        Debug.Log("Hitbox ENABLED");
     }
 
     public void DisableHitbox()
     {
         canDamage = false;
+        Debug.Log("Hitbox DISABLED");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"Hitbox triggered by {other.name}, tag: {other.tag}, canDamage: {canDamage}");
+
         if (!canDamage) return;
 
         if (other.CompareTag("Enemy"))

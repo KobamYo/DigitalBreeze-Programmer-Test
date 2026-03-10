@@ -1,10 +1,12 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     private PlayerController playerController;
 
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private TextMeshProUGUI healthText;
     private int currentHealth;
 
     private void Awake()
@@ -15,6 +17,12 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Update()
+    {
+        if (healthText != null)
+            healthText.text = $"Health: {currentHealth}";
     }
 
     public void TakeDamage(int damage)

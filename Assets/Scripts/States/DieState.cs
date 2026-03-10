@@ -26,6 +26,11 @@ public class DieState : PlayerState
             GameObject.Destroy(player.gameObject);
     }
 
+    public override void FixedUpdate()
+    {
+        player.rb.linearVelocity = Vector2.zero;
+    }
+
     public override void Exit()
     {
         player.inputHandler.enabled = true;
